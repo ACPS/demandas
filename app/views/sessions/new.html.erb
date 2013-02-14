@@ -1,0 +1,32 @@
+<%= notice %>
+
+<div class="row-fluid centrar" style="text-align: center">
+	
+		
+	<div class="span6">
+	<legend>Bienvenido:</legend>  
+	
+	
+	
+	<%= form_tag sessions_path, :class=>'form-horizontal form-inline' do    %>  
+	   <div class="control-group">
+		    <label class="control-label" for="email">Email</label>
+		    <div class="controls">
+	      		<input type="text" id="email" name='email' placeholder="Email">
+	        </div>  
+	  	</div>
+	  	
+	  	<div class="control-group">
+		    <label class="control-label" for="password">Contraseña</label>
+		    <div class="controls">
+	      		<input type="password" id="password" name='password' placeholder="Password">
+	        </div>  
+	  	</div>
+	  	<div class="control-group">
+		   <div class="controls">
+		  		<%= submit_tag  'Ingresar', :class=>'btn btn-primary'%>
+		  </div>
+	  </div>  
+	<% end %>
+	</div>
+</div>  

@@ -1,0 +1,40 @@
+<%= form_for(@demand) do |f| %>
+  <% if @demand.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@demand.errors.count, "error") %> prohibited this demand from being saved:</h2>
+
+      <ul>
+      <% @demand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Nombre persona a demandar<br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    Apellido persona a demandar<br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    Direccion:<br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :caso %><br />
+    <%= f.text_area :case %>
+  </div>
+  <div class="field">
+    <%= f.label :dependencia %><br />
+    <%= f.collection_select :dependency_id, Dependency.all, :id, :descripcion, { :prompt => 'Seleccione una dependencia', :include_blank => false }  %>
+  </div>
+  
+  
+  <div class="actions">
+  	<%= link_to 'Regresar', demands_path, :class=>"btn" %>
+    <%= f.submit :val=>'Enviar', :class=>"btn btn-primary" %>
+  </div>
+<% end %>

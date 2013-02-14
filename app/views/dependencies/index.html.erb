@@ -1,0 +1,32 @@
+
+
+<ul class="breadcrumb">
+  <li>Bienvenido: </li>
+  <li><a href="#"><%= session[:user].name %></a></li>
+</ul>
+
+
+
+<legend style="text-align: center"><h3>Lista de dependencias</h3></legend>
+
+<table class="table table-striped table-hover table-bordered table-condensed">
+  <tr >
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dependencies.each do |dependency| %>
+  <tr >
+    <td><%= dependency.descripcion %></td>
+    <td><%= link_to 'Mostrar', dependency %></td>
+    <td><%= link_to 'Editar', edit_dependency_path(dependency) %></td>
+    <td><%= link_to 'Eliminar', dependency, method: :delete, data: { confirm: '¿Esta seguro de eliminar esta dependencia??' } ,:class=>'btn btn-danger btn-mini'%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to "Regresar", home_index_path,  :class=>"btn"%>
+<%= link_to 'Nueva Dependencia', new_dependency_path, :class=>"btn btn-primary" %>

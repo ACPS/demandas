@@ -1,0 +1,56 @@
+
+
+<%= form_for @user , :class=>"form-horizontal" do |f|%>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> Se han presentado los siguientes errores:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field control-group>
+    <%= f.label :Nombre, :class=>"control-label"  %>
+    <div class="controls">
+    	<%= f.text_field :name %>
+    </div>
+  </div>
+  
+  <div class="field control-group">
+    <%= f.label :Email, :class=>"control-label" %>
+    <div class="controls">
+    	<%= f.text_field :email %>
+    </div>
+  </div>
+  
+  <div class="field control-group">
+    <%= f.label :Celular, :class=>"control-label" %>
+    <div class="controls">
+    	<%= f.text_field :cellphone %>
+	</div>
+  </div>
+  
+  <div class="field control-group">
+  	Contraseña:<br>
+    <div class="controls">
+    	<%= f.text_field :password %>
+    </div>
+  </div>
+  
+  <div class="field control-group">
+    Confirmar Contraseña:<br>
+    <div class="controls">
+    	<%= f.text_field :password_confirmation %>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= link_to 'Regresar', users_path, :class=>"btn" %>
+    <%= f.submit :class=>"btn btn-primary"%>
+    
+  </div>
+<% end %>

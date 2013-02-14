@@ -1,0 +1,16 @@
+
+
+<ul class="breadcrumb">
+  <li>Bienvenido: </li>
+  <li><a href="#"><%= session[:user].name %></a></li>
+</ul>
+
+<p id="notice"><%= notice %></p><br><br>
+<p>
+  <b>Descripcion:</b>
+  <%= @dependency.descripcion %>
+</p>
+
+<%= link_to 'Regresar', dependencies_path, :class=>'btn' %>
+<%= link_to 'Editar', edit_dependency_path(@dependency) , :class=>'btn btn-primary'%> 
+

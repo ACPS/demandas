@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demanda</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Primer Taller Ruby on Rails</a>
+				
+				<ul class="nav pull-right" >
+					
+				
+					<%if !session[:user].nil? %>	
+					<li class="active">
+						<%= link_to "Inicio", home_index_path %>
+					</li>
+					<li class="divider-vertical"></li>
+					<li>
+						<%= link_to "Salir", log_out_path %>  
+					</li>
+					<%end%>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div>
+			<%= yield %>
+		</div>
+		</div>
+	</body>
+</html>

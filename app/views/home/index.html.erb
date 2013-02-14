@@ -1,0 +1,46 @@
+
+
+<ul class="breadcrumb">
+  <li>Bienvenido: </li>
+  <li><a href="#"><%= session[:user].name %></a></li>
+</ul>
+
+<% if session[:user].tipo==1 %>
+<br><br>
+<div class="row">
+	
+	<blockquote class="span6">
+		<%= link_to "Usuarios", users_path ,  :class=>"btn btn-large btn"  %>
+	  
+	  <p>
+	  	<em>En esta opcion podras visualizar, agregar, editar y eliminar usuarios</em> 
+	  </p>
+	</blockquote>
+	<blockquote class="span8">
+		<%= link_to "Dependencias", dependencies_path ,  :class=>"btn btn-large btn"  %>
+	  
+	  <p>
+	  	<em>En esta opcion podras visualizar, agregar, editar y eliminar demandas</em> 
+	  </p>
+	</blockquote>
+</div>
+
+	
+<% else %>
+<br>
+<br>
+<blockquote>
+	<%= link_to "Demandas", demands_path ,  :class=>"btn btn-large btn"  %>
+  
+  <p>
+  	<% if(session[:user].tipo==2) %>
+  	<em>En esta opcion podras, visualizar, agregar, editar y eliminar demandas</em>
+  	<% end %> 
+  	 <% if(session[:user].tipo==3) %>
+  	<em>En esta opcion podras, visualizar, aprobar, y rechazar demandas</em>
+  	<% end %>
+  </p>
+</blockquote>
+
+
+<% end %>

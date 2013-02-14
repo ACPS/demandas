@@ -1,0 +1,52 @@
+<ul class="breadcrumb">
+  <li>Bienvenido: </li>
+  <li><a href="#"><%= session[:user].name %></a></li>
+</ul>
+
+<legend style="text-align: center"><h3>Lista de demandas</h3></legend>
+
+<table class="table table-striped table-hover table-bordered table-condensed">
+  <tr >
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Direccion</th>
+    <th>Caso</th>
+    <th>Dependencia</th>
+    <th>Estado</th>
+	<th>Usuario</th>    
+    <%if session[:user].tipo == 2 %>
+    	<th></th>
+    	<th></th>
+    	<th></th>
+    <%else%>
+    	<th></th>
+    	<th></th>	
+    <%end%>
+  </tr>
+
+<% @demands.each do |demand| %>
+  <tr >
+    <td><%= demand.name %></td>
+    <td><%= demand.last_name %></td>
+    <td><%= demand.address %></td>
+    <td><%= demand.case %></td>
+    <td><%= demand.dependency.descripcion %></td>
+    <td><%= demand.estado%></td>
+    <td><%= demand.user.name%></td>
+    <%if session[:user].tipo == 2 %>
+	    <td><%= link_to 'Mostrar', demand %></td>
+	    <td><%= link_to 'Editar', edit_demand_path(demand) %></td>
+	    <td><%= link_to 'Eliminar', demand, method: :delete, data: { confirm: 'Are you sure?' } ,  :class=>'btn btn-danger btn-mini'%></td>
+	<% else %>
+		 <td><%= link_to 'Aprobar', aprobar_path(:id=>demand.id, :opcion => 1), method: :post %></td>
+	     <td><%= link_to 'Rechazar',  aprobar_path(:id=>demand.id, :opcion => 2), method: :post  %></td>   
+  	<%end%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+		<%= link_to "Regresar", home_index_path ,:class=>'btn'%>
+    <%if session[:user].tipo == 2 %>
+		<%= link_to 'Nueva Demanda', new_demand_path, :class=>'btn btn-primary' %>
+	<%end%>
